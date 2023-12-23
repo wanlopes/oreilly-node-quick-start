@@ -1,21 +1,25 @@
+const timer = 5000; 
+const outputInterval = 1000;
+let val = 0;
 
-process.stdout.write('wanessa\n');
+Process.stdout.write(`${timer/1000} second delay\n`);
 
-const arr = ["Dog", "Cat", "Rabbit"];
-
-const output = (val= 0) => {
-    process.stdout.write(`${arr[val]}\n`);
+const ready = () => {
+    outputInterval(`ready`);
+    clearInterval(myInt);
+    process.stdout.write('\n');
 }
 
-const num = Math.floor(Math.random()*2);
-output(num);
+const counter = () => {
+    val++;
+    outputInterval(`${(timer/1000)-val} seconds left`);
+}
 
-process.stdin.on('data', data => {
-    process.stdout.write(`You wrote ${data}
-    \n`);
-    process.exit();
-})
+const output = (mes) => {
+    process.stdout.clearLine();
+    process.stdout.cursorTo(0);
+    process.stdout.write(mes);
+}
 
-process.on('exit', data => {
-    console.log("you exited");
-}) 
+cons myInt = setInterval(counter, outputInterval);
+setTimeout(ready, timer);
