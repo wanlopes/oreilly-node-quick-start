@@ -67,14 +67,16 @@ const fs = require("fs");
 const port = 8080;
 const host = "127.0.0.1";
 
-const server = http.createServer((request, reponse) => {
+const server = http.createServer((request, response) => {
   console.log(request.url);
-  Response.writeHead(200, {'Content-Type': 'text/html'});
-  Response.write('<h1></h1>Hello World</h1>');
-  Response.write(`Request URL : ${request.url}`);
-  Response.end();
-})
+  fs.readFile("./mods/index.html", (error, html) => {
+    response.writeHead(200, { "Content-Type": "text/html" });
+    response.write(`<script>alert('Hello');</script>`);
+    response.write(html);
+    response.end();
+  });
+});
 
 server.listen(port, host, () => {
   console.log("ready");
-})
+});
