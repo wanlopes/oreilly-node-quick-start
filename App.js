@@ -35,29 +35,46 @@
 // const first = require('./mods/first.js');
 // first();
 
-
 // const ranNum = require('./mods/randomNum.js');
 // console.log(ranNum.random(50));
 
-const fs = require('fs');
-const myFiles = fs.readdirSync('./mods');
-console.log(myFiles);
+// const fs = require('fs');
+// const myFiles = fs.readdirSync('./mods');
+// console.log(myFiles);
 
-fs.readdir('./mods', (error, files) => {
-    if(error){throw error;}
-    console.log(files);
-}) 
+// fs.readdir('./mods', (error, files) => {
+//     if(error){throw error;}
+//     console.log(files);
+// })
 
-const getSec = fs.readFileSync('./mods/test.txt', 'UTF-8');
-console.log(getSec);
+// const getSec = fs.readFileSync('./mods/test.txt', 'UTF-8');
+// console.log(getSec);
 
-fs.readFile("./mods/test.txt", "UTF-8", (error, files) => {
-    if(error) {throw error;}
-    console.log(output);
-});
+// fs.readFile("./mods/test.txt", "UTF-8", (error, files) => {
+//     if(error) {throw error;}
+//     console.log(output);
+// });
 
-const myText = `UPDATED`;
-fs.writeFile('./mods/secret.txt' ,myText, error => {
-    if(error){throw error;}
-    console.log('File ready');
-}); 
+// const myText = `UPDATED`;
+// fs.writeFile('./mods/secret.txt' ,myText, error => {
+//     if(error){throw error;}
+//     console.log('File ready');
+// });
+
+const http = require("http");
+const fs = require("fs");
+
+const port = 8080;
+const host = "127.0.0.1";
+
+const server = http.createServer((request, reponse) => {
+  console.log(request.url);
+  Response.writeHead(200, {'Content-Type': 'text/html'});
+  Response.write('<h1></h1>Hello World</h1>');
+  Response.write(`Request URL : ${request.url}`);
+  Response.end();
+})
+
+server.listen(port, host, () => {
+  console.log("ready");
+})
