@@ -1,11 +1,5 @@
 {
-  "name": "oreilly-node-quick-start",
-  "version": "1.0.0",
-  "description": "Node Quick Start Project",
-  "main": "index.js",
-  "scripts": {
-    "test": "test"
-  },
-  "author": "Wanessa Lopes",
-  "license": "ISC"
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
